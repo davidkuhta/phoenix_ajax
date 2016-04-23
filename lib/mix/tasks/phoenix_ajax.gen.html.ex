@@ -48,7 +48,6 @@ defmodule Mix.Tasks.PhoenixAjax.Gen.Html do
     Mix.Phoenix.check_module_name_availability!(binding[:module] <> "View")
 
     Mix.Phoenix.copy_from paths(), "priv/templates/phoenix.gen.html", "", binding, [
-      {:eex, "controller.ex",       "web/controllers/#{path}_controller.ex"},
       {:eex, "view.ex",             "web/views/#{path}_view.ex"},
       {:eex, "controller_test.exs", "test/controllers/#{path}_controller_test.exs"},
     ]
@@ -74,6 +73,7 @@ defmodule Mix.Tasks.PhoenixAjax.Gen.Html do
     path = binding[:path]
 
     Mix.Phoenix.copy_from ajax_paths(), "priv/templates/phoenix_ajax.gen.html", "", binding, [
+      {:eex, "controller.ex",           "web/controllers/#{path}_controller.ex"},
       {:eex, "_dialog.html.eex",        "web/templates/#{path}/_dialog.html.eex"},
       {:eex, "_single.html.eex",        "web/templates/#{path}/_#{path}.html.eex"},
       {:eex, "create.js.eex",           "web/templates/#{path}/create.js.eex"},
