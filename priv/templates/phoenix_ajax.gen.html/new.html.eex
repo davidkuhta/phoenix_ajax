@@ -1,39 +1,39 @@
-<h2>New property</h2>
+<h2>New <%= template_singular %></h2>
 
-<%= render "form.html", changeset: @changeset, action: entity_property_path(@conn, :create, @entity), property_classes: @property_classes %>
+<%= "<%=" %>  render "form.html", changeset: @changeset, action: entity_<%= singular %>_path(@conn, :create, @entity), <%= singular %>_classes: @<%= singular %>_classes <%= "%\>" %>
 
 <script>
 "use strict";
-$(".new.property.button").on("click", e => {
+$(".new.<%= singular %>.button").on("click", e => {
   e.preventDefault()
   $.ajax({
     type: "GET",
-    url: "/properties/new",
+    url: "/<%= plural %>/new",
     dataType: 'json',
     success: e => {
-      $(".property.modal.header").html("New Property")
-      $(".property.modal.actions").html('<div class="ok ui create property green button">Create Property</div>')
-      $(".property.modal.content").html(e.new_property)
-      $(".ui.property.modal").modal("toggle")
+      $(".<%= singular %>.modal.header").html("New <%= template_singular %>")
+      $(".<%= singular %>.modal.actions").html('<div class="ok ui create <%= singular %> green button">Create <%= template_singular %></div>')
+      $(".<%= singular %>.modal.content").html(e.new_<%= singular %>)
+      $(".ui.<%= singular %>.modal").modal("toggle")
     },
     error: e => {
       alert(e.responseJSON["message"]);
     },
     complete: e => {
-      $(".create.property.button").on("click", e=> {
-        let form = $("#new-property-form")
+      $(".create.<%= singular %>.button").on("click", e=> {
+        let form = $("#new-<%= singular %>-form")
         let data = { _csrf_token: $( 'input[name="_csrf_token"]').val(),
-                     property:    { name: form.find('input[name="property[name]"]').val(),
-                                    property_class: form.find('input[name="property[property_class]"]').val()
+                     <%= singular %>:    { name: form.find('input[name="<%= singular %>[name]"]').val(),
+                                    <%= singular %>_class: form.find('input[name="<%= singular %>[<%= singular %>_class]"]').val()
                    }
         }
         $.ajax({
           type: "POST",
-          url: "/properties",
+          url: "/<%= plural %>",
           data: data,
           success: e => {
-            $(".ui.property.modal").modal("toggle")
-            $("#properties-table").append(e.created_property)
+            $(".ui.<%= singular %>.modal").modal("toggle")
+            $("#<%= plural %>-table").append(e.created_<%= singular %>)
           },
           error: e => {
             alert(e.responseJSON["message"]);
@@ -43,36 +43,36 @@ $(".new.property.button").on("click", e => {
     }
   })
 })
-$(".edit.property.button").on("click", e => {
+$(".edit.<%= singular %>.button").on("click", e => {
   e.preventDefault()
   $.ajax({
     type: "GET",
-    url: "/properties/edit",
+    url: "/<%= plural %>/edit",
     dataType: 'json',
     success: e => {
-      $(".property.modal.header").html("Edit Property")
-      $(".property.modal.actions").html('<div class="ok ui update property orange button">Update Property</div>')
-      $(".property.modal.content").html(e.edit_property)
-      $(".ui.property.modal").modal("toggle")
+      $(".<%= singular %>.modal.header").html("Edit <%= template_singular %>")
+      $(".<%= singular %>.modal.actions").html('<div class="ok ui update <%= singular %> orange button">Update <%= template_singular %></div>')
+      $(".<%= singular %>.modal.content").html(e.edit_<%= singular %>)
+      $(".ui.<%= singular %>.modal").modal("toggle")
     },
     error: e => {
       alert(e.responseJSON["message"]);
     },
     complete: e => {
-      $(".update.property.button").on("click", e=> {
-        let form = $("#new-property-form")
+      $(".update.<%= singular %>.button").on("click", e=> {
+        let form = $("#new-<%= singular %>-form")
         let data = { _csrf_token: $( 'input[name="_csrf_token"]').val(),
-                     property:    { name: form.find('input[name="property[name]"]').val(),
-                                    property_class: form.find('input[name="property[property_class]"]').val()
+                     <%= singular %>:    { name: form.find('input[name="<%= singular %>[name]"]').val(),
+                                    <%= singular %>_class: form.find('input[name="<%= singular %>[<%= singular %>_class]"]').val()
                    }
         }
         $.ajax({
           type: "POST",
-          url: "/properties",
+          url: "/<%= plural %>",
           data: data,
           success: e => {
-            $(".ui.property.modal").modal("toggle")
-            $("#properties-table").append(e.created_property)
+            $(".ui.<%= singular %>.modal").modal("toggle")
+            $("#<%= plural %>-table").append(e.created_<%= singular %>)
           },
           error: e => {
             alert(e.responseJSON["message"]);

@@ -1,4 +1,4 @@
-$('#property-dialog').modal('toggle');
+$('#<%= singular %>-dialog').modal('toggle');
 
-$('#property-<%= @property.id %>').replaceWith("<%=
-escape_javascript(render("_property.html", conn: @conn, property: @property, entity: @entity)) %>");
+$('#<%= singular %>-<%= @<%= singular %>.id %>').replaceWith("<%=
+escape_javascript(render("_<%= singular %>.html", conn: @conn, <%= singular %>: @<%= singular %>)) %>");

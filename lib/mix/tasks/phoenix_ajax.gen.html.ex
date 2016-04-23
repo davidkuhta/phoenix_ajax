@@ -122,28 +122,28 @@ defmodule Mix.Tasks.PhoenixAJAX.Gen.Html do
       {_, {:references, _}} ->
         {nil, nil, nil}
       {key, :integer}    ->
-        {label(key), ~s(<%= number_input f, #{inspect(key)}, class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= number_input f, #{inspect(key)} %>), error(key)}
       {key, :float}      ->
-        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any", class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any" %>), error(key)}
       {key, :decimal}    ->
-        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any", class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any" %>), error(key)}
       {key, :boolean}    ->
-        {label(key), ~s(<%= checkbox f, #{inspect(key)}, class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= checkbox f, #{inspect(key)} %>), error(key)}
       {key, :text}       ->
-        {label(key), ~s(<%= textarea f, #{inspect(key)}, class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= textarea f, #{inspect(key)} %>), error(key)}
       {key, :date}       ->
-        {label(key), ~s(<%= date_select f, #{inspect(key)}, class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= text_input f, #{inspect(key)}, type: "date" %>), error(key)}
       {key, :time}       ->
-        {label(key), ~s(<%= time_select f, #{inspect(key)}, class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= text_input f, #{inspect(key)}, type: "time" %>), error(key)}
       {key, :datetime}   ->
-        {label(key), ~s(<%= datetime_select f, #{inspect(key)}, class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= text_input f, #{inspect(key)}, type: "datetime" %>), error(key)}
       {key, _}           ->
-        {label(key), ~s(<%= text_input f, #{inspect(key)}, class: "form-control" %>), error(key)}
+        {label(key), ~s(<%= text_input f, #{inspect(key)} %>), error(key)}
     end
   end
 
   defp label(key) do
-    ~s(<%= label f, #{inspect(key)}, class: "control-label" %>)
+    ~s(<%= label f, #{inspect(key)} %>) #removed ', class: "control-label"'
   end
 
   defp error(field) do

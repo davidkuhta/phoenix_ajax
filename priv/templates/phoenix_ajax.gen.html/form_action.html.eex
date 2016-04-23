@@ -1,5 +1,5 @@
-<%= if :built == @changeset.data.__meta__.state do %>
-  <div class="ui ok green property button">Create Property</div>
-<% else %>
-  <div class="ui ok orange property button">Update Property</div>
-<% end %>
+<%= "<%=" %> if :built == @changeset.data.__meta__.state do <%= "%\>" %>
+  <div class="ui ok green <%= singular %> button">Create <%= template_singular %></div>
+<%= "<%" %> else <%= "%\>" %>
+  <div class="ui ok orange <%= singular %> button">Update <%= template_singular %></div>
+<%= "<%" %> end <%= "%\>" %>

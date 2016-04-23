@@ -1,39 +1,27 @@
-<div class="ui property error box"></div>
-<h2>Listing Properties</h2>
+<div class="ui <%= singular %> error box"></div>
+<h2>Listing <%= template_plural %></h2>
 
 <table class="ui celled table">
   <thead>
     <tr>
-      <th></th>
-      <th>Entity</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Class</th>
-      <th>Architectural style</th>
-      <th>Purchase Price</th>
-      <th>Purchase Date</th>
-      <th>No. of units</th>
-      <th>Area</th>
-      <th>Year build</th>
-      <th>No. of stories</th>
-
+      <%= for {k, _} <- attrs do %>
+        <th><%= Phoenix.Naming.humanize(Atom.to_string(k)) %></th>
+      <% end %>
       <th></th>
     </tr>
   </thead>
-  <tbody id="properties-table">
-  <%= for property <- @properties do %>
-    <%= render "_property.html", property: property, entity: @entity, conn: @conn %>
-  <% end %>
+  <tbody id="<%= plural %>-table">
+    <%= "<%=" %> for <%= singular %> <- @<%= plural %> do <%= "%\>" %>
+      <%= "<%=" %> render "_<%= singular %>.html", <%= singular %>: <%= singular %>, conn: @conn <%= "%\>" %>
+    <% end %>
   </tbody>
 </table>
 <br />
-<%= link "New Property", to: entity_property_path(@conn, :new, @entity), class: "ui new property button", data: [remote: true] %>
+<%= "<%=" %> link "New <%= template_singular %>", to: <%= singular %>_path(@conn, :new), class: "ui new property button", data: [remote: true]  %>
 
-<div class="ui property modal" id="property-dialog">
+<div class="ui <%= singular %> modal" id="<%= singular %>-dialog">
   <i class="close icon"></i>
-  <div class="property modal header">Property Form Loading</div>
-  <div class="property modal content"><p>Property Modal Content</p></div>
-  <div class="property modal actions"></div>
+  <div class="<%= singular %> modal header"></div>
+  <div class="<%= singular %> modal content"></div>
+  <div class="<%= singular %> modal actions"></div>
 </div>
-
-<% render_existing @view_module, "scripts." <> @view_template, assigns %>

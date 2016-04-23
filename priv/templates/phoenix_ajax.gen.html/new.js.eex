@@ -1,6 +1,5 @@
-$('#property-dialog').modal( {observeChanges: true,}).modal("show");
+$('#<%= singular %>-dialog').modal( {observeChanges: true,}).modal("show");
 
-<%= render("form.js", conn: @conn, changeset: @changeset, action: entity_property_path(@conn, :create, @entity),
- property_classes: @property_classes) %>
+<%= "<%=" %>  render("form.js", conn: @conn, changeset: @changeset, action: <%= singular %>_path(@conn, :create) <%= "%\>" %> 
 
-$('.property.modal.header').html("Add a new property!");
+$('.<%= singular %>.modal.header').html("Add a New <%= template_singular %>!");

@@ -1,98 +1,16 @@
-<%= form_for @changeset, @action, [multipart: true, class: "ui property form", id: "new-property-form",
+<%%= form_for @changeset, @action, [multipart: true, class: "ui <%= singular %> form", id: "new-<%= singular %>-form",
  data: [remote: true]], fn f -> %>
-  <%= if @changeset.action do %>
+  <%%= if @changeset.action do %>
     <div class="ui message">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
-  <% end %>
-
-  <div class="three fields">
-    <div class="field">
-      <%= label f, :avatar %>
-      <%= file_input f, :avatar, class: "ui" %>
-      <%= error_tag f, :avatar %>
-    </div>
-    <div class="field">
-      <%= label f, :name %>
-      <%= text_input f, :name %>
-      <%= error_tag f, :name %>
-    </div>
-    <div class="field">
-      <%= label f, :property_class %>
-      <%= select f, :property_class, @property_classes, class: "ui dropdown" %>
-      <%= error_tag f, :property_class %>
-    </div>
-  </div>
-  <div class="three fields">
-    <div class="field">
-      <%= label f, :purchase_price %>
-      <div class="ui left labeled input">
-        <div class="ui label">$</div>
-        <%= number_input f, :purchase_price, step: "any" %>
-      </div>
-      <%= error_tag f, :purchase_price %>
-    </div>
-    <div class="field">
-      <%= label f, :purchase_date %>
-      <%= text_input f, :purchase_date, type: "date" %>
-      <%= error_tag f, :purchase_date %>
-    </div>
-    <div class="field">
-      <%= label f, :year_built %>
-      <%= text_input f, :year_built, type: "date" %>
-      <%= error_tag f, :year_built %>
-    </div>
-  </div>
-  <div class="four fields">
-    <div class="field">
-      <%= label f, :number_of_units %>
-      <%= number_input f, :number_of_units %>
-      <%= error_tag f, :number_of_units %>
-    </div>
-    <div class="field">
-      <%= label f, :area %>
-      <%= number_input f, :area, step: "any" %>
-      <%= error_tag f, :area %>
-    </div>
-    <div class="field">
-      <%= label f, :number_of_stories %>
-      <%= number_input f, :number_of_stories %>
-      <%= error_tag f, :number_of_stories %>
-    </div>
-    <div class="field">
-      <%= label f, :architectural_style %>
-      <%= text_input f, :architectural_style %>
-      <%= error_tag f, :architectural_style %>
-    </div>
-  </div>
+  <%% end %>
+<%= for {label, input, error} <- inputs, input do %>
   <div class="field">
-    <%= label f, :description %>
-    <%= textarea f, :description, rows: 2 %>
-    <%= error_tag f, :description %>
+    <%= label %>
+    <%= input %>
+    <%= error %>
   </div>
-  <div class="two fields">
-    <div class="field">
-      <%= label f, :street_one %>
-      <%= text_input f, :street_one %>
-    </div>
-    <div class="field">
-      <%= label f, :street_two %>
-      <%= text_input f, :street_two %>
-    </div>
-  </div>
-<div class="three fields">
-  <div class="field">
-    <%= label f, :city %>
-    <%= text_input f, :city %>
-  </div>
-  <div class="field">
-    <%= label f, :state %>
-    <%= text_input f, :state %>
-  </div>
-  <div class="field">
-    <%= label f, :zip_code %>
-    <%= text_input f, :zip_code %>
-  </div>
-</div>
-<div class="ui error message"></div>
 <% end %>
+<div class="ui error message"></div>
+<%% end %>
