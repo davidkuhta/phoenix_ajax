@@ -3,8 +3,8 @@
     <td><%= "<%=" %> @<%= singular %>.<%= k %> <%= "%\>" %></td>
 <% end %>
   <td class="text-right">
-    <%= "<%=" %> link raw("<i class='search icon'></i>"), to: <%= singular %>_path(@conn, :show, <%= singular %>), class: "ui show property-#{@<%= singular %>.id}" <%= "%\>" %>
-    <%= "<%=" %> link raw("<i class='edit icon'></i>"), to: <%= singular %>_path(@conn, :edit, <%= singular %>), class: "ui edit property-#{@<%= singular %>.id}" <%= "%\>" %>
+    <%= "<%=" %> link raw("<i class='search icon'></i>"), to: <%= singular %>_path(@conn, :show, <%= singular %>), class: "ui show <%= singular %>-#{@<%= singular %>.id}" <%= "%\>" %>
+    <%= "<%=" %> link raw("<i class='edit icon'></i>"), to: <%= singular %>_path(@conn, :edit, <%= singular %>), class: "ui edit <%= singular %>-#{@<%= singular %>.id}" <%= "%\>" %>
     <%= "<%=" %> link raw("<i class='delete icon'></i>"), to: <%= singular %>_path(@conn, :delete, <%= singular %>), method: :delete, data: [confirm: "Are you sure?", ajax: true], class: "ui" <%= "%\>" %>
   </td>
 </tr>
