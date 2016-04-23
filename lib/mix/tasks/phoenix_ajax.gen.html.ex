@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.PhoenixAJAX.Gen.Html do
+defmodule Mix.Tasks.PhoenixAjax.Gen.Html do
   use Mix.Task
 
   @shortdoc "Generates controller, model and views for an HTML based resource
