@@ -17,7 +17,7 @@ defmodule <%= module %>Controller do
     changeset = <%= alias %>.changeset(%<%= alias %>{}, <%= singular %>_params)
 
     case Repo.insert(changeset) do
-      {:ok, _<%= singular %>} ->
+      {:ok, <%= singular %>} ->
         conn
         |> put_flash(:info, "<%= human %> created successfully.")
         |> render(:create, <%= singular %>: <%= singular %>)

@@ -1,5 +1,5 @@
 $('#<%= singular %>-dialog').modal( {observeChanges: true,}).modal("show");
 
-<%= "<%=" %>  render("form.js", conn: @conn, changeset: @changeset, action: <%= singular %>_path(@conn, :create) <%= "%\>" %> 
+<%= "<%=" %>  render("form.js", conn: @conn, changeset: @changeset, action: <%= singular %>_path(@conn, :create)) <%= "%\>" %> 
 
 $('.<%= singular %>.modal.header').html("Add a New <%= template_singular %>!");

@@ -1,5 +1,5 @@
 $('.<%= singular %>.modal.content').html("<%= "<%=" %> escape_javascript(render("form.html",
-conn: @conn, changeset: @changeset, action: @action, <%= singular %>_classes: @<%= singular %>_classes)) <%= "%\>" %>");
+conn: @conn, changeset: @changeset, action: @action)) <%= "%\>" %>");
 
 $('.<%= singular %>.modal.actions').html("<%= "<%=" %> escape_javascript(render("form_action.html", changeset: @changeset)) <%= "%\>" %>");
 

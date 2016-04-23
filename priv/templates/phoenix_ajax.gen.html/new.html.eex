@@ -1,6 +1,6 @@
 <h2>New <%= template_singular %></h2>
 
-<%= "<%=" %>  render "form.html", changeset: @changeset, action: entity_<%= singular %>_path(@conn, :create, @entity), <%= singular %>_classes: @<%= singular %>_classes <%= "%\>" %>
+<%= "<%=" %>  render "form.html", changeset: @changeset, action: <%= singular %>_path(@conn, :create), <%= singular %>_classes: @<%= singular %>_classes <%= "%\>" %>
 
 <script>
 "use strict";
