@@ -1,1 +1,1 @@
-$('#<%= singular %>-<%= @<%= singular %>.id %>').fadeOut();
+$('#<%= singular %>-<%= "<%=" %> @<%= singular %>.id <%= "%\>" %>').fadeOut();

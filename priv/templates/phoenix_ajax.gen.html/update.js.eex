@@ -1,4 +1,4 @@
 $('#<%= singular %>-dialog').modal('toggle');
 
-$('#<%= singular %>-<%= @<%= singular %>.id %>').replaceWith("<%=
-escape_javascript(render("_<%= singular %>.html", conn: @conn, <%= singular %>: @<%= singular %>)) %>");
+$('#<%= singular %>-<%= "<%=" %> @<%= singular %>.id <%= "%\>" %>').replaceWith("<%= "<%=" %>
+escape_javascript(render("_<%= singular %>.html", conn: @conn, <%= singular %>: @<%= singular %>)) <%= "%\>" %>");

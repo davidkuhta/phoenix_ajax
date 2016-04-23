@@ -1,5 +1,5 @@
 $('#<%= singular %>-dialog').modal('toggle');
 
-$('#<%= plural %>-table').append("<%= escape_javascript(render("_<%= singular %>.html", conn: @conn, <%= singular %>: @<%= singular %>)) %>");
+$('#<%= plural %>-table').append("<%= "<%=" %> escape_javascript(render("_<%= singular %>.html", conn: @conn, <%= singular %>: @<%= singular %>)) <%= "%\>" %>");
 
 $('[data-submit^=parent]').on("click", jsDelete);

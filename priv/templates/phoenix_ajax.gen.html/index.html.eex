@@ -13,11 +13,11 @@
   <tbody id="<%= plural %>-table">
     <%= "<%=" %> for <%= singular %> <- @<%= plural %> do <%= "%\>" %>
       <%= "<%=" %> render "_<%= singular %>.html", <%= singular %>: <%= singular %>, conn: @conn <%= "%\>" %>
-    <% end %>
+    <%= "<%=" %> end <%= "%\>" %>
   </tbody>
 </table>
 <br />
-<%= "<%=" %> link "New <%= template_singular %>", to: <%= singular %>_path(@conn, :new), class: "ui new property button", data: [remote: true]  %>
+<%= "<%=" %> link "New <%= template_singular %>", to: <%= singular %>_path(@conn, :new), class: "ui new <%= singular %> button", data: [remote: true]  %>
 
 <div class="ui <%= singular %> modal" id="<%= singular %>-dialog">
   <i class="close icon"></i>

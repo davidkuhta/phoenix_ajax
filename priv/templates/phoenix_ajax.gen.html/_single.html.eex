@@ -1,6 +1,6 @@
-<tr id='<%= singular %>-@<%= singular %>.id'>
+<tr id='<%= singular %>-<%= "<%=" %> @<%= singular %>.id <%= "%\>" %>'>
   <%= for {k, _} <- attrs do %>
-    <td><%= "<%=" %> <%= singular %>.<%= k %> <%= "%\>" %></td>
+    <td><%= "<%=" %> @<%= singular %>.<%= k %> <%= "%\>" %></td>
 <% end %>
   <td class="text-right">
     <%= "<%=" %> link raw("<i class='search icon'></i>"), to: <%= singular %>_path(@conn, :show, <%= singular %>), class: "ui show property-#{@<%= singular %>.id}" <%= "%\>" %>
