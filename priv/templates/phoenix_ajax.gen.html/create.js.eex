@@ -1,0 +1,5 @@
+$('#property-dialog').modal('toggle');
+
+$('#properties-table').append("<%= escape_javascript(render("_property.html", conn: @conn, property: @property)) %>");
+
+$('[data-submit^=parent]').on("click", jsDelete);

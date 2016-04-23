@@ -1,0 +1,39 @@
+<div class="ui property error box"></div>
+<h2>Listing Properties</h2>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Entity</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Class</th>
+      <th>Architectural style</th>
+      <th>Purchase Price</th>
+      <th>Purchase Date</th>
+      <th>No. of units</th>
+      <th>Area</th>
+      <th>Year build</th>
+      <th>No. of stories</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="properties-table">
+  <%= for property <- @properties do %>
+    <%= render "_property.html", property: property, entity: @entity, conn: @conn %>
+  <% end %>
+  </tbody>
+</table>
+<br />
+<%= link "New Property", to: entity_property_path(@conn, :new, @entity), class: "ui new property button", data: [remote: true] %>
+
+<div class="ui property modal" id="property-dialog">
+  <i class="close icon"></i>
+  <div class="property modal header">Property Form Loading</div>
+  <div class="property modal content"><p>Property Modal Content</p></div>
+  <div class="property modal actions"></div>
+</div>
+
+<% render_existing @view_module, "scripts." <> @view_template, assigns %>

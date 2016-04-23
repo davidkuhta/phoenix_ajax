@@ -1,0 +1,4 @@
+$('#property-dialog').modal('toggle');
+
+$('#property-<%= @property.id %>').replaceWith("<%=
+escape_javascript(render("_property.html", conn: @conn, property: @property, entity: @entity)) %>");

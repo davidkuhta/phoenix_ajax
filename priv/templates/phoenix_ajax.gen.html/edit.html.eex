@@ -1,0 +1,6 @@
+<h2>Edit property</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: entity_property_path(@conn, :update, @entity, @property) %>
+
+<% link "Back", to: entity_property_path(@conn, :index, @entity) %>

@@ -1,0 +1,6 @@
+$('#property-dialog').modal( {observeChanges: true,}).modal("show");
+
+<%= render("form.js", conn: @conn, changeset: @changeset, action: entity_property_path(@conn, :create, @entity),
+ property_classes: @property_classes) %>
+
+$('.property.modal.header').html("Add a new property!");

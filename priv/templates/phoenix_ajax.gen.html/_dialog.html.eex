@@ -1,0 +1,6 @@
+<div class="ui <%= singular %> modal" id="<%= singular %>-dialog">
+  <i class="close icon"></i>
+  <div class="<%= singular %> modal header"></div>
+  <div class="<%= singular %> modal content"></div>
+  <div class="<%= singular %> modal actions"></div>
+</div>

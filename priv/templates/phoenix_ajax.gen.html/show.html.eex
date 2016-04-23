@@ -1,0 +1,158 @@
+<div class="ui row">
+	<div class="ui six wide column">
+		<div class="ui segment">
+			<img src='<% Tealbark.PropertyAvatar.url({@property.avatar, @property}, :thumb) %>'>
+			<img src='http://news.boisestate.edu/update/files/2011/08/ERB300x300.jpg' class="ui centered image">
+		</div>
+	</div>
+	<div class="ten wide column">
+		<div class="ui segment">
+			<div class="ui two column grid">
+			  <div class="sixteen wide column">
+			    <h1 class="ui center aligned header"><%= @property.name %></h1>
+			  </div>
+				<div class="column">
+					<p>
+						<strong>Class: </strong><%= @property.property_class %><br />
+						<strong>No. of Units: </strong><br />
+						<strong>Area: </strong><%= @property.area %> ft<sup>2</sup>
+					</p>
+				</div>
+				<div class="column">
+					<p><strong>Address: </strong><br />
+					<%= @property.street_one %><br />
+					<% if @property.street_two do %>
+						<%= @property.street_two %><br />
+					<% end %>
+					<%= @property.city %>, <%= @property.state %>, <%= @property.zip_code %>
+				</div>
+				<div class="column">
+					<p>
+						<strong>Purchase Date: </strong><%= @property.purchase_date %><br />
+						<strong>Year Built: </strong><%= @property.year_built %>
+					</p>
+				</div>
+				<div class="column">
+					<p>
+						<strong>Purchase Price: </strong><%= @property.purchase_price %><br />
+						<strong>*Current Value*: </strong><%= @property.purchase_price %>
+					</p>
+				</div>
+				<div class="column">
+					<p><strong>Architectural Style: </strong><%= @property.architectural_style %></p>
+				</div>
+				<div class="column">
+					<p><strong>No. of Stories: </strong><%= @property.number_of_stories %></p>
+				</div>
+				<div class="column">
+					<p><strong>Description: </strong><%= @property.description %></p>
+				</div>
+				<div class="column">
+					<p><strong>Account: </strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div  class="ui top attached tabular menu">
+  <a class="item active" data-tab="discussion">Discussion</a>
+  <a class="item" data-tab="units">Units</a>
+  <a class="item" data-tab="estimates">Estimates</a>
+  <a class="item" data-tab="governments">Governments</a>
+  <a class="item" data-tab="schools">Schools</a>
+  <a class="item" data-tab="insurance">Insurance</a>
+  <a class="item" data-tab="repairs">Repairs</a>
+</div>
+<div class="ui bottom attached tab segment active" data-tab="discussion">
+	<div class="row">
+		<div class="column">
+			<%= content_tag :div, id: "property", data: [id: @property.id] do %>
+			<% end %>
+		</div>
+		<div class="column">
+			<div id="msg-container">
+			</div>
+			<div>
+				<textarea id="msg-input" rows="3" placeholder="Comment..."></textarea>
+				<button id="msg-submit" class="ui button" type="submit">Post</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="ui bottom attached tab segment" data-tab="units">
+	<table class="ui celled table">
+	  <thead>
+	    <tr>
+	      <th rowspan="2">Identifier</th>
+	      <th rowspan="2">Rent amount</th>
+	      <th rowspan="2">Area</th>
+	      <th rowspan="2">Bedrooms</th>
+				<th colspan="3">Bath</th>
+	      <th rowspan="2">Pets</th>
+	      <th colspan="2">Parking</th>
+	      <th rowspan="2">Max occupants</th>
+	      <th rowspan="2">Description</th>
+	      <th rowspan="2">Comments</th>
+	      <th rowspan="2"></th>
+	    </tr>
+			<tr>
+				<th>Full</th>
+				<th>&frac12;</th>
+				<th>&frac34;</th>
+				<th>Total</th>
+				<th>Covered</th>
+			</tr>
+	  </thead>
+	  <tbody id="properties-table">
+	  <%= for unit <- @property.units do %>
+	    <%= render Tealbark.UnitView, "_unit.html", property: @property, conn: @conn, unit: unit %>
+	  <% end %>
+	  </tbody>
+	</table>
+	<%= link "New Unit", to: property_unit_path(@conn, :new, @property),
+	 class: "ui new unit green fluid button", data: [remote: true] %>
+</div>
+<div class="ui bottom attached tab segment" data-tab="estimates"></div>
+<div class="ui bottom attached tab segment" data-tab="governments"></div>
+<div class="ui bottom attached tab segment" data-tab="schools"></div>
+<div class="ui bottom attached tab segment" data-tab="insurance"></div>
+<div class="ui bottom attached tab segment" data-tab="repairs">
+	<table class="ui celled table">
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Description</th>
+	      <th>Date Completed</th>
+	      <th>Estimate</th>
+				<th></th>
+	    </tr>
+	  </thead>
+	  <tbody id="repairs-table">
+	  <%= for repair <- @property.repairs do %>
+	    <%= render Tealbark.RepairView, "_repair.html", property: @property, conn: @conn, repair: repair %>
+	  <% end %>
+	  </tbody>
+	</table>
+	<%= link "New Repair", to: property_repair_path(@conn, :new, @property),
+	 class: "ui new repair green fluid button", data: [remote: true] %>
+</div>
+
+<div class="row">
+  <%= link "Back", to: entity_property_path(@conn, :index, @entity), class: "ui primary button" %>
+	<%= link "Delete Property", to: entity_property_path(@conn, :delete, @entity, @property),
+	 method: :delete, data: [confirm: "Are you sure?"], class: "ui negative button" %>
+</div>
+
+<div class="ui unit modal" id="unit-dialog">
+  <i class="close icon"></i>
+  <div class="unit modal header">Unit Modal Header</div>
+  <div class="unit modal content"><p>Unit Modal Content</p></div>
+  <div class="unit modal actions"></div>
+</div>
+
+<div class="ui repair modal" id="repair-dialog">
+  <i class="close icon"></i>
+  <div class="repair modal header">Repair Modal Header</div>
+  <div class="repair modal content"><p>Repair Modal Content</p></div>
+  <div class="repair modal actions"></div>
+</div>
