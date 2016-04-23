@@ -1,6 +1,7 @@
 # Phoenix_AJAX
 
-**TODO: Add description**
+A resource generator for Phoenix which provides templates with AJAX functionality
+utilizing the Semantic UI framework functionality.
 
 ## Installation
 
@@ -18,3 +19,13 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [applications: [:phoenix_ajax]]
         end
 
+## Generators
+
+### Generate Resource
+
+Generates a Phoenix resource similar to ```mix phoenix.gen.html``` with
+AJAX functionality.
+
+```
+mix phoenix_ajax.gen.html User users name:string age:integer
+```

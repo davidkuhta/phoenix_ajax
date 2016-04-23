@@ -74,11 +74,19 @@ defmodule Mix.Tasks.PhoenixAJAX.Gen.Html do
     path = binding[:path]
 
     Mix.Phoenix.copy_from ajax_paths(), "priv/templates/phoenix_ajax.gen.html", "", binding, [
-      {:eex, "edit.html.haml",       "web/templates/#{path}/edit.html.haml"},
-      {:eex, "form.html.haml",       "web/templates/#{path}/form.html.haml"},
-      {:eex, "index.html.haml",      "web/templates/#{path}/index.html.haml"},
-      {:eex, "new.html.haml",        "web/templates/#{path}/new.html.haml"},
-      {:eex, "show.html.haml",       "web/templates/#{path}/show.html.haml"},
+      {:eex, "_dialog.html.eex",        "web/templates/#{path}/_dialog.html.eex"},
+      {:eex, "_single.html.eex",        "web/templates/#{path}/_#{path}.html.eex"},
+      {:eex, "create.js.eex",           "web/templates/#{path}/create.js.eex"},
+      {:eex, "delete.js.eex",           "web/templates/#{path}/delete.js.eex"},
+      {:eex, "edit.html.eex",           "web/templates/#{path}/edit.html.eex"},
+      {:eex, "edit.js.eex",             "web/templates/#{path}/edit.js.eex"},
+      {:eex, "form_action.html.eex",    "web/templates/#{path}/form_action.eex"},
+      {:eex, "form.js.eex",             "web/templates/#{path}/form.js.eex"},
+      {:eex, "index.html.eex",          "web/templates/#{path}/index.html.eex"},
+      {:eex, "new.html.eex",            "web/templates/#{path}/new.html.eex"},
+      {:eex, "new.js.eex",              "web/templates/#{path}/new.js.eex"},
+      {:eex, "show.html.eex",           "web/templates/#{path}/show.html.eex"},
+      {:eex, "update.js.eex",           "web/templates/#{path}/update.js.eex"},
     ]
   end
 
