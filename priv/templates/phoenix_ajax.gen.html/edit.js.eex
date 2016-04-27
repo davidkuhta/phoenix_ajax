@@ -1,6 +1,6 @@
 $('#<%= singular %>-dialog').modal( {observeChanges: true,}).modal("show");
 
-<%= "<%=" %> render "form.js", changeset: @changeset,
+<%= "<%=" %> render "form.js", conn: @conn, changeset: @changeset,
                         action: <%= singular %>_path(@conn, :update, @<%= singular %>) <%= "%\>" %>
 
 $('.<%= singular %>.modal.header').html("Edit <%= template_singular %>!");
